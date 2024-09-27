@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <p>The model predicts that the tumor is: <strong>{{ result }}</strong></p>
+        <p>
+            A "Malignant" result means the tumor is likely cancerous and may require immediate medical attention.<br>
+            A "Benign" result means the tumor is non-cancerous, but monitoring may still be necessary.
+        </p>
+
+        <!-- Action Tips Based on Diagnosis -->
+        {% if result == 'Malignant' %}
+        <div class="action-tips">
+            <h3>Recommended Actions for Malignant Tumor</h3>
+            <ul>
+                <li>Consult an oncologist immediately for further evaluation.</li>
+                <li>Discuss treatment options such as surgery, chemotherapy, or radiation therapy.</li>
+                <li>Consider genetic counseling if you have a family history of cancer.</li>
+                <li>Maintain a healthy diet and exercise routine to support your treatment.</li>
+            </ul>
+        </div>
+        {% else %}
+        <div class="action-tips">
+            <h3>Recommended Actions for Benign Tumor</h3>
+            <ul>
+                <li>Schedule regular follow-ups with your doctor to monitor the tumor.</li>
+                <li>Maintain a healthy lifestyle to reduce the risk of future complications.</li>
+                <li>Stay informed about changes in your breast tissue and report any new symptoms.</li>
+                <li>Consider lifestyle modifications like reducing alcohol intake and avoiding smoking.</li>
+            </ul>
+        </div>
+        {% endif %}
+
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
